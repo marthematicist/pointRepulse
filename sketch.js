@@ -21,9 +21,9 @@ var setupGlobalVariables = function() {
   yMax = yRes;
   edgeWidth = xMax * 0.1;
   edgeSpringConstant = 50000;
-  frictionConstant = 0;
+  frictionConstant = 0.1;
 
-  numDots = 10;
+  numDots = 100;
   
   minVel = 0;
   maxVel = 2;

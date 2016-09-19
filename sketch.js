@@ -47,7 +47,7 @@ class Dots{
     this.A = new Array( this.N );
     this.M = new Array( this.N );
     var nSquared = this.N*this.N;
-    this.D = new Array( nSquared );
+    this.D = new Array(  );
     
     for( var i = 0 ; i < this.N ; i++ ) {
       this.X.push( createVector( random(xMin,xMax) , random(yMin , yMax) ) );

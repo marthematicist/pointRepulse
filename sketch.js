@@ -117,15 +117,14 @@ Dots.prototype.zeroAccelerations = function() {
     }
   }
     
-  /// LEFT OFF HERE
   Dots.prototype.applyMutualForces = function() {
     for( var i = 0 ; i < this.N - 1 ; i++ ) {
       for( var j = i + 1 ; j < this.N ; j++ ) {
         var d = this.getDist( i , j );
         var f = universalConstant / pow( d * d + epsilon * epsilon , 1.5 );
-        dAi = p5.Vector.sub( this.X[i] , this.X[j] );
+        var dAi = p5.Vector.sub( this.X[i] , this.X[j] );
         dAi.normalize();
-        PVector dAj = new PVector( dAi.x , dAi.y );
+        var dAj = createVector( dAi.x , dAi.y );
         dAi.mult( f * this.M[j] );
         dAj.mult( -f * this.M[i] );
         this.A[i].add( dAi );
@@ -134,89 +133,82 @@ Dots.prototype.zeroAccelerations = function() {
     }
   }
   
-  void applyEdgeForces() {
-    for( int i = 0 ; i < this.N ; i++ ) {
-      float x = this.X[i].x;
-      float y = this.X[i].y;
-      float m = this.M[i];
+  Dots.prototype.applyEdgeForces = function() {
+    for( var i = 0 ; i < this.N ; i++ ) {
+      var x = this.X[i].x;
+      var y = this.X[i].y;
+      var m = this.M[i];
       if( x < 0 ) {
-
-          float f = edgeSpringConstant * -x;
-          PVector dA = new PVector( f / m , 0 );
+          var f = edgeSpringConstant * -x;
+          var dA = createVector( f / m , 0 );
           this.A[i].add( dA );
-
       }
       if( y < 0 ) {
-
-          float f = edgeSpringConstant * ( -y );
-          PVector dA = new PVector( 0, f / m );
+          var f = edgeSpringConstant * ( -y );
+          var dA = createVector( 0, f / m );
           this.A[i].add( dA );
- 
       }
       if( x > xMax ) {
-
-          float f = edgeSpringConstant * ( x - ( xMax ) );
-          PVector dA = new PVector( -f / m , 0 );
+          var f = edgeSpringConstant * ( x - ( xMax ) );
+          var dA = createVector( -f / m , 0 );
           this.A[i].add( dA );
-  
       }
       if( y > yMax ) {
-
-          float f = edgeSpringConstant * ( y - ( yMax ) );
-          PVector dA = new PVector( 0 , -f / m );
+          var f = edgeSpringConstant * ( y - ( yMax ) );
+          var dA = createVector( 0 , -f / m );
           this.A[i].add( dA );
       }
     }
   }
   
-  void evolveHalfStep() {
+  Dots.prototype.evolveHalfStep = function() {
     this.zeroAccelerations();
     this.updateDistances();
     this.applyMutualForces();
     this.applyEdgeForces();
     this.applyFrictionForces();
-    for( int i = 0 ; i < this.N ; i++ ) {
+    for( var i = 0 ; i < this.N ; i++ ) {
       
-      this.V[i].add( PVector.mult( this.A[i] , dt / 2 ) );
+      this.V[i].add( p5.Vector.mult( this.A[i] , dt / 2 ) );
     }
   }
   
-  void evolveFullStep( int num ) {
-    for( int n = 0 ; n < num ; n++ ) {
-      for( int i = 0 ; i < this.N ; i++ ) {
-        this.X[i].add( PVector.mult( this.V[i] , dt ) );
+  Dots.prototype.evolveFullStep( num ) {
+    for( var n = 0 ; n < num ; n++ ) {
+      for( var i = 0 ; i < this.N ; i++ ) {
+        this.X[i].add( p5.Vector.mult( this.V[i] , dt ) );
       }
       this.zeroAccelerations();
       this.updateDistances();
       this.applyMutualForces();
       this.applyEdgeForces();
       this.applyFrictionForces();
-      for( int i = 0 ; i < this.N ; i++ ) {
-        this.V[i].add( PVector.mult( this.A[i] , dt ) );
+      for( var i = 0 ; i < this.N ; i++ ) {
+        this.V[i].add( p5.Vector.mult( this.A[i] , dt ) );
       }
     }
   }
       
-  void drawDots() {
-    for( int i = 0 ; i < this.N ; i++ ) {
-      float x = this.X[i].x;
-      float y = this.X[i].y;
-      point( x , y );
+  Dots.prototype.drawDots = function() {
+    for( var i = 0 ; i < this.N ; i++ ) {
+      var x = this.X[i].x;
+      var y = this.X[i].y;
+      ellipse( x , y , 10 , 10 );
       
     }
   }
   
-  void drawDistances(  ) {
-    for( int i = 0 ; i < this.N - 1 ; i++ ) {
-      for( int j = i + 1 ; j < this.N ; j++ ) {
-        float d = getDist( i , j );
+  Dots.prototype.drawDistances = function(  ) {
+    for( var i = 0 ; i < this.N - 1 ; i++ ) {
+      for( var j = i + 1 ; j < this.N ; j++ ) {
+        var d = getDist( i , j );
         if( d < distThreshold ) {
-          float x1 = this.X[i].x;
-          float y1 = this.X[i].y;
-          float x2 = this.X[j].x;
-          float y2 = this.X[j].y;
+          var x1 = this.X[i].x;
+          var y1 = this.X[i].y;
+          var x2 = this.X[j].x;
+          var y2 = this.X[j].y;
           if( d > distThreshold - fadeThreshold ) {
-            float fadeAlpha = lineAlpha * (distThreshold - d) / fadeThreshold;
+            var fadeAlpha = lineAlpha * (distThreshold - d) / fadeThreshold;
             lineColor = color( lineR , lineG , lineB , fadeAlpha );
           } else {
             lineColor = color( lineR , lineG , lineB , lineAlpha );
@@ -229,4 +221,37 @@ Dots.prototype.zeroAccelerations = function() {
   }
   
 }
-      
+
+
+setup = function() {
+  createCanvas( xRes , yRes );
+  d = new Dots(  );
+  d.evolveHalfStep();
+  background( 0 , 0 , 0 , 255 );
+}
+
+draw = function() {
+  background( 0 , 0 , 0 , 255 );
+  fill( 255 );
+  //strokeWeight(2);
+  d.evolveFullStep(5);
+  d.drawDots();
+  //d.drawDistances(  );
+
+  frameCounter++;
+  
+  /*
+  if( frameCounter == 200 ) {
+    frictionConstant = 0.00;
+  }
+  if( frictionConstant == 0 ) {
+    println( "low friction!" );
+  }
+  
+  */
+  if( generateNew ) {
+    generateNew = false;
+    d = new Dots(  );
+    //exit();
+  }
+}

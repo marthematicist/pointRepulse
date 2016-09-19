@@ -243,13 +243,13 @@ draw = function() {
   //console.log( 'draw function: evolving full step' );
   d.X[0] = createVector( mouseX , mouseY );
   d.V[0] = createVector( 0 , 0 );
-  d.M[0] = avgMass*200;
+  d.M[0] = avgMass*100;
   
   d.evolveFullStep(2);
   
   //console.log( 'drawing dots' );
   d.drawDots();
-  //d.drawDistances(  );
+  d.drawDistances(  );
 
   frameCounter++;
   

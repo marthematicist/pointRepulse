@@ -227,7 +227,7 @@ setup = function() {
   setupGlobalVariables();
   createCanvas( xRes , yRes );
   console.log( 'setting up Dots object' );
-  d = new Dots(  );
+  d = new Dots( numDots );
   console.log( 'evolving half step');
   d.evolveHalfStep();
   background( 0 , 0 , 0 , 255 );

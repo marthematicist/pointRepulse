@@ -140,12 +140,12 @@ Dots.prototype.zeroAccelerations = function() {
       var x = this.X[i].x;
       var y = this.X[i].y;
       var m = this.M[i];
-      if( x < 0 ) {
+      if( x < xMin ) {
           var f = edgeSpringConstant * -x;
           var dA = createVector( f / m , 0 );
           this.A[i].add( dA );
       }
-      if( y < 0 ) {
+      if( y < yMin ) {
           var f = edgeSpringConstant * ( -y );
           var dA = createVector( 0, f / m );
           this.A[i].add( dA );

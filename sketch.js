@@ -30,7 +30,7 @@ var setupGlobalVariables = function() {
   
   avgMass = 50;
 
-  universalConstant = 250;
+  universalConstant = 25000;
   console.log( universalConstant );
   epsilon = 10;
 

@@ -221,6 +221,7 @@ Dots.prototype.zeroAccelerations = function() {
 
 
 setup = function() {
+  setupGlobalVariables();
   createCanvas( xRes , yRes );
   d = new Dots(  );
   d.evolveHalfStep();

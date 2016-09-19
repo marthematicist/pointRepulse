@@ -5,7 +5,7 @@ var setupGlobalVariables = function() {
   maxRes = max( xRes , yRes );
   
   distThreshold = 400;
-  fadeThreshold = 100;
+  fadeThreshold = 300;
   alphaFactor = 0.05;
   
   lineR = 255;

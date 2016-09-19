@@ -6,13 +6,13 @@ var setupGlobalVariables = function() {
   
   distThreshold = 400;
   fadeThreshold = 100;
-  alphaFactor = 0.1;
+  alphaFactor = 0.05;
   
   lineR = 255;
   lineG = 255;
   lineB = 255;
   lineAlpha = 255;
-  bgAlpha = 1;
+  bgAlpha = 0;
   lineColor = color( lineR , lineG , lineB , lineAlpha );
   
   dt = 1.0 / ( 40 );

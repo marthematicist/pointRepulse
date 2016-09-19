@@ -13,7 +13,7 @@ var setupGlobalVariables = function() {
   lineAlpha = 255;
   lineColor = color( lineR , lineG , lineB , lineAlpha );
   
-  dt = 1.0 / ( 40 * 5 );
+  dt = 1.0 / ( 40 );
   
   xMin = 0;
   xMax = xRes;
@@ -30,7 +30,7 @@ var setupGlobalVariables = function() {
   
   avgMass = 50;
 
-  universalConstant = 25;
+  universalConstant = 250;
   console.log( universalConstant );
   epsilon = 10;
 

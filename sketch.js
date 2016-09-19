@@ -30,7 +30,7 @@ var setupGlobalVariables = function() {
   
   avgMass = 50;
 
-  universalConstant = 250;
+  universalConstant = 2500;
   epsilon = 10;
 
   frameCounter = 0;

@@ -23,7 +23,7 @@ var setupGlobalVariables = function() {
   edgeSpringConstant = 50000;
   frictionConstant = 1;
 
-  numDots = 100;
+  numDots = 10;
   
   minVel = 0;
   maxVel = 2;
@@ -193,7 +193,7 @@ Dots.prototype.zeroAccelerations = function() {
       var x = this.X[i].x;
       var y = this.X[i].y;
       ellipse( x , y , 10 , 10 );
-      //console.log("drawing dots");
+      //console.log(x , y);
       
     }
   }
@@ -234,12 +234,12 @@ setup = function() {
 }
 
 draw = function() {
-  console.log( 'draw function: setting upt canvas' );
+  //console.log( 'draw function: setting upt canvas' );
   background( 0 , 0 , 0 , 255 );
   fill( 255 , 255 , 255 , 255 );
   noStroke();
   //strokeWeight(2);
-  console.log( 'draw function: evolving full step' );
+  //console.log( 'draw function: evolving full step' );
   d.evolveFullStep(5);
   
   console.log( 'drawing dots' );

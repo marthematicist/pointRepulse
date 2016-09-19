@@ -193,7 +193,7 @@ Dots.prototype.zeroAccelerations = function() {
       var x = this.X[i].x;
       var y = this.X[i].y;
       ellipse( x , y , 10 , 10 );
-      console.log(x , y);
+      //console.log(x , y);
       
     }
   }
@@ -242,7 +242,7 @@ draw = function() {
   //console.log( 'draw function: evolving full step' );
   d.evolveFullStep(5);
   
-  console.log( 'drawing dots' );
+  //console.log( 'drawing dots' );
   d.drawDots();
   //d.drawDistances(  );
 

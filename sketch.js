@@ -12,7 +12,7 @@ var setupGlobalVariables = function() {
   lineG = 255;
   lineB = 255;
   lineAlpha = 255;
-  bgAlpha = 0;
+  bgAlpha = 1;
   lineColor = color( lineR , lineG , lineB , lineAlpha );
   
   dt = 1.0 / ( 40 );

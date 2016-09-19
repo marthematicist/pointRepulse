@@ -85,8 +85,6 @@ class Dots{
       }
     }
     */
-    
-  }
   
 Dots.prototype.updateDistances = function() {
   for( var i = 0 ; i < this.N - 1 ; i++ ) {

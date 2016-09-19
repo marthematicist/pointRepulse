@@ -12,6 +12,7 @@ var setupGlobalVariables = function() {
   lineG = 255;
   lineB = 255;
   lineAlpha = 255;
+  bgAlpha = 0;
   lineColor = color( lineR , lineG , lineB , lineAlpha );
   
   dt = 1.0 / ( 40 );
@@ -237,7 +238,7 @@ setup = function() {
 
 draw = function() {
   //console.log( 'draw function: setting upt canvas' );
-  background( 0 , 0 , 0 , 2 );
+  background( 0 , 0 , 0 , bgAlpha );
   fill( 255 , 255 , 255 , 255 );
   noStroke();
   //strokeWeight(2);

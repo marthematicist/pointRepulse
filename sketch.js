@@ -223,21 +223,26 @@ Dots.prototype.zeroAccelerations = function() {
 
 
 setup = function() {
+  console.log( 'Setting up global variables...' );
   setupGlobalVariables();
   createCanvas( xRes , yRes );
+  console.log( 'setting up Dots object' );
   d = new Dots(  );
+  console.log( 'evolving half step');
   d.evolveHalfStep();
   background( 0 , 0 , 0 , 255 );
 }
 
 draw = function() {
+  console.log( 'draw function: setting upt canvas' );
   background( 0 , 0 , 0 , 255 );
   fill( 255 , 255 , 255 , 255 );
   noStroke();
   //strokeWeight(2);
+  console.log( 'draw function: evolving full step' );
   d.evolveFullStep(5);
   
-  
+  console.log( 'drawing dots' );
   d.drawDots();
   //d.drawDistances(  );
 
@@ -251,10 +256,10 @@ draw = function() {
     println( "low friction!" );
   }
   
-  */
   if( generateNew ) {
     generateNew = false;
     d = new Dots(  );
     //exit();
   }
+  */
 }

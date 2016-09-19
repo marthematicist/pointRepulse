@@ -236,7 +236,7 @@ setup = function() {
 
 draw = function() {
   //console.log( 'draw function: setting upt canvas' );
-  background( 0 , 0 , 0 , 100 );
+  background( 0 , 0 , 0 , 30 );
   fill( 255 , 255 , 255 , 255 );
   noStroke();
   //strokeWeight(2);

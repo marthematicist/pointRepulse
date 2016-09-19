@@ -171,7 +171,7 @@ Dots.prototype.zeroAccelerations = function() {
     }
   }
   
-  Dots.prototype.evolveFullStep( num ) {
+  Dots.prototype.evolveFullStep = function( num ) {
     for( var n = 0 ; n < num ; n++ ) {
       for( var i = 0 ; i < this.N ; i++ ) {
         this.X[i].add( p5.Vector.mult( this.V[i] , dt ) );

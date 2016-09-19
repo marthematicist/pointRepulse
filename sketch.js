@@ -38,6 +38,9 @@ var setupGlobalVariables = function() {
 
   frameCounter = 0;
   generateNew = false;
+  
+  clearFirstTime = true;
+  startTime = 0;
 }
 
 
@@ -234,9 +237,27 @@ setup = function() {
   console.log( 'evolving half step');
   d.evolveHalfStep();
   background( 0 , 0 , 0 , 255 );
+  
+  startTime = millis();
+  
+  textAlign( CENTER );
+  fill( 255 , 255 , 255 , 255 );
+  textSize( 60 );
+  text("VAPOR TRAIL" , 0.5*xRes , 0.5*yRes );
+  textSize( 30 );
+  text( "-marthematicist-" , 0.5*xRes , 0.5*yRes + 35 );
 }
 
 draw = function() {
+  if( millis() - startTime < waitTime ) {
+    
+    return
+  }
+  if( clearFirstTime ) {
+    background( 0 , 0 , 0 , 255 );
+    clearFirstTime = false;
+  }
+  
   //console.log( 'draw function: setting upt canvas' );
   //background( 0 , 0 , 0 , bgAlpha );
   fill( 255 , 255 , 255 , 255 );

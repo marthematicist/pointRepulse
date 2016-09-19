@@ -41,6 +41,7 @@ var setupGlobalVariables = function() {
   
   clearFirstTime = true;
   startTime = 0;
+  waitTime = 3000;
 }
 
 

@@ -242,7 +242,7 @@ draw = function() {
   //strokeWeight(2);
   //console.log( 'draw function: evolving full step' );
   d.X[0] = createVector( mouseX , mouseY );
-  d.V[0] = creaveVector( 0 , 0 );
+  d.V[0] = createVector( 0 , 0 );
   
   d.evolveFullStep(2);
   

@@ -23,7 +23,7 @@ var setupGlobalVariables = function() {
   edgeSpringConstant = 50000;
   frictionConstant = 0.02;
 
-  numDots = 100;
+  numDots = 50;
   
   minVel = 0;
   maxVel = 80;

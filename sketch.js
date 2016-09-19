@@ -5,7 +5,8 @@ var setupGlobalVariables = function() {
   maxRes = max( xRes , yRes );
   
   distThreshold = 400;
-  fadeThreshold = 300;
+  fadeThreshold = 100;
+  alphaFactor = 0.1;
   
   lineR = 255;
   lineG = 255;
@@ -210,9 +211,9 @@ Dots.prototype.zeroAccelerations = function() {
           var y2 = this.X[j].y;
           if( d > distThreshold - fadeThreshold ) {
             var fadeAlpha = lineAlpha * (distThreshold - d) / fadeThreshold;
-            lineColor = color( lineR , lineG , lineB , fadeAlpha );
+            lineColor = color( lineR , lineG , lineB , fadeAlpha*alphaFactor );
           } else {
-            lineColor = color( lineR , lineG , lineB , lineAlpha );
+            lineColor = color( lineR , lineG , lineB , lineAlpha*alphaFactor );
           }
           stroke( lineColor );
           line( x1 , y1 , x2 , y2 );          

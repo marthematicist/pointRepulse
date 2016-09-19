@@ -202,7 +202,7 @@ Dots.prototype.zeroAccelerations = function() {
   Dots.prototype.drawDistances = function(  ) {
     for( var i = 0 ; i < this.N - 1 ; i++ ) {
       for( var j = i + 1 ; j < this.N ; j++ ) {
-        var d = getDist( i , j );
+        var d = this.getDist( i , j );
         if( d < distThreshold ) {
           var x1 = this.X[i].x;
           var y1 = this.X[i].y;

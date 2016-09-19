@@ -50,11 +50,11 @@ class Dots{
     this.D = new Array(  );
     
     for( var i = 0 ; i < this.N ; i++ ) {
-      this.X.push( createVector( random(xMin,xMax) , random(yMin , yMax) ) );
-      this.V.push( p5.Vector.random2D() );
+      this.X[i] = createVector( random(xMin,xMax) , random(yMin , yMax) );
+      this.V[i] = p5.Vector.random2D();
       this.V[i].mult( random(minVel,maxVel) );
-      this.A.push( createVector( 0 , 0 ) );
-      this.M.push( avgMass );
+      this.A[i] = ( createVector( 0 , 0 ) );
+      this.M[i] = ( avgMass );
     }
   }
 }

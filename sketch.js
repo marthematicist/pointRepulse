@@ -16,12 +16,12 @@ var setupGlobalVariables = function() {
   
   dt = 1.0 / ( 40 );
   
-  xMin = -0.1*xRes;
-  xMax = 1.1*xRes;
-  yMin = -0.1*yRes;
-  yMax = 1.1*yRes;
+  xMin = -0.2*xRes;
+  xMax = 1.2*xRes;
+  yMin = -0.2*yRes;
+  yMax = 1.2*yRes;
   edgeWidth = xMax * 0.1;
-  edgeSpringConstant = 50000;
+  edgeSpringConstant = 5000;
   frictionConstant = 0.1;
 
   numDots = 50;

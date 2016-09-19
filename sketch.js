@@ -217,8 +217,7 @@ Dots.prototype.zeroAccelerations = function() {
       }
     }
   }
-  
-}
+
 
 
 setup = function() {

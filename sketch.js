@@ -1,6 +1,6 @@
 var setupGlobalVariables = function() {
-  xRes = displayWidth;
-  yRes = displayHeight;
+  xRes = windowWidth;
+  yRes = windowHeight;
   minRes = min( xRes , yRes );
   maxRes = max( xRes , yRes );
   

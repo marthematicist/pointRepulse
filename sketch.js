@@ -4,8 +4,8 @@ var setupGlobalVariables = function() {
   minRes = min( xRes , yRes );
   maxRes = max( xRes , yRes );
   
-  distThreshold = 200;
-  fadeThreshold = 150;
+  distThreshold = 400;
+  fadeThreshold = 300;
   
   lineR = 255;
   lineG = 255;
@@ -23,10 +23,10 @@ var setupGlobalVariables = function() {
   edgeSpringConstant = 50000;
   frictionConstant = 0.02;
 
-  numDots = 50;
+  numDots = 100;
   
   minVel = 0;
-  maxVel = 20;
+  maxVel = 80;
   
   avgMass = 50;
 

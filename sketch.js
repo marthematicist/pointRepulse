@@ -241,7 +241,10 @@ draw = function() {
   noStroke();
   //strokeWeight(2);
   //console.log( 'draw function: evolving full step' );
-  d.evolveFullStep(5);
+  d.X[0] = createVector( mouseX , mouseY );
+  d.V[0] = creaveVector( 0 , 0 );
+  
+  d.evolveFullStep(2);
   
   //console.log( 'drawing dots' );
   d.drawDots();

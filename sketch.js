@@ -231,9 +231,12 @@ setup = function() {
 
 draw = function() {
   background( 0 , 0 , 0 , 255 );
-  fill( 255 );
+  fill( 255 , 255 , 255 , 255 );
+  noStroke();
   //strokeWeight(2);
   d.evolveFullStep(5);
+  
+  
   d.drawDots();
   //d.drawDistances(  );
 

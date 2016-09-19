@@ -1,3 +1,42 @@
+var setupGlobalVariables = function() {
+  xRes = displayWidth;
+  yRes = displayHeight;
+  minRes = min( xRes , yRes );
+  maxRes = max( xRes , yRes );
+  
+  
+  distThreshold = 200;
+  fadeThreshold = 150;
+  
+  lineR = 255;
+  lineG = 255;
+  lineB = 255;
+  lineAlpha = 255;
+  lineColor = color( lineR , lineG , lineB , lineAlpha );
+  
+  dt = 1.0 / ( 40 * 5 );
+  
+  xMin = 0;
+  xMax = xRes;
+  yMin = 0;
+  yMax = yRes;
+  edgeWidth = xMax * 0.1;
+  edgeSpringConstant = 50000;
+  frictionConstant = 1;
+
+  numDots = 100;
+  
+  minVel = 0;
+  maxVel = 2;
+
+  float universalConstant = 250;
+  float epsilon = 10;
+
+  frameCounter = 0;
+  generateNew = false;
+}
+
+
 class Dots{
   int N;  // number of dots
   PVector[] X;  // positions
@@ -7,16 +46,16 @@ class Dots{
   float[] D;    // distances
   
   // constructor
-  Dots(  ) {
-    int dotsPerCluster = numDots / numClusters;
-    int num = dotsPerCluster * numClusters;
-    this.N = num;
-    this.X = new PVector[num];
-    this.V = new PVector[num];
-    this.A = new PVector[num];
-    this.M = new float[num];
-    this.D = new float[num*num];
-
+  constructor( N ) {
+    this.N = N;
+    this.X = new Array( this.N );
+    this.V = new Array( this.N );
+    this.A = new Array( this.N );
+    this.M = new Array( this.N );
+    this.D = new Array( this.N*this.N );
+    
+    
+    /*
     for( int j = 0 ; j < numClusters ; j++ ) {
       float centerX = random( xMin , xMax );
       float centerY = random( yMin , yMax );
@@ -40,6 +79,8 @@ class Dots{
         this.M[i] = (abs(randomGaussian())+0.001 ) * 50;
       }
     }
+    */
+    
   }
   
   void updateDistances() {

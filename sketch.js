@@ -27,6 +27,8 @@ var setupGlobalVariables = function() {
   
   minVel = 0;
   maxVel = 2;
+  
+  avgMass = 50;
 
   float universalConstant = 250;
   float epsilon = 10;
@@ -37,13 +39,6 @@ var setupGlobalVariables = function() {
 
 
 class Dots{
-  int N;  // number of dots
-  PVector[] X;  // positions
-  PVector[] V;  // velocities
-  PVector[] A;  // accelerations
-  float[] M;    // masses
-  float[] D;    // distances
-  
   // constructor
   constructor( N ) {
     this.N = N;
@@ -52,6 +47,17 @@ class Dots{
     this.A = new Array( this.N );
     this.M = new Array( this.N );
     this.D = new Array( this.N*this.N );
+    
+    for( var i = 0 ; i < this.N ; i++ ) {
+      this.X.push( createVector( random(xMin,xMax) , random(yMin , yMax) ) );
+      this.V.push( p5.Vector.random2D() );
+      this.V[i].mult( random(minVel,maxVel) );
+      this.A.push( createVector( 0 , 0 ) );
+      this.M.push( avgMass );
+    }
+  }
+}
+    
     
     
     /*
@@ -82,42 +88,42 @@ class Dots{
     
   }
   
-  void updateDistances() {
-    for( int i = 0 ; i < this.N - 1 ; i++ ) {
-      for( int j = i ; j < this.N ; j++ ) {
-        float d = this.X[i].dist( this.X[j] ); 
-        this.D[i*this.N + j] = d; 
-        this.D[j*this.N + 1] = d;
-      }
+Dots.prototype.updateDistances = function() {
+  for( var i = 0 ; i < this.N - 1 ; i++ ) {
+    for( var j = i ; j < this.N ; j++ ) {
+      var d = this.X[i].dist( this.X[j] ); 
+      this.D[i*this.N + j] = d; 
+      this.D[j*this.N + 1] = d;
     }
   }
+}
+
+Dots.prototype.getDist = function( i , j ) {
+  var d = this.D[i*this.N + j];
+  return d;
+}
   
-  float getDist( int i , int j ) {
-    float d = this.D[i*this.N + j];
-    return d;
+Dots.prototype.zeroAccelerations = function() {
+  for( var i = 0 ; i < this.N ; i++ ) {
+    this.A[i] = createVector( 0 , 0 );
   }
+}
   
-  void zeroAccelerations() {
-    for( int i = 0 ; i < this.N ; i++ ) {
-      this.A[i] = new PVector( 0 , 0 );
-    }
-  }
-  
-  void applyFrictionForces() {
-    for( int i = 0 ; i < this.N ; i++ ) {
-      PVector dA = new PVector( this.V[i].x , this.V[i].y );
+  Dots.prototype.applyFrictionForces = function() {
+    for( var i = 0 ; i < this.N ; i++ ) {
+      dA = createVector( this.V[i].x , this.V[i].y );
       dA.mult( -frictionConstant );
       this.A[i].add( dA );
     }
   }
     
-  
-  void applyMutualForces() {
-    for( int i = 0 ; i < this.N - 1 ; i++ ) {
-      for( int j = i + 1 ; j < this.N ; j++ ) {
-        float d = this.getDist( i , j );
-        float f = universalConstant / pow( d * d + epsilon * epsilon , 1.5 );
-        PVector dAi = PVector.sub( this.X[i] , this.X[j] );
+  /// LEFT OFF HERE
+  Dots.prototype.applyMutualForces = function() {
+    for( var i = 0 ; i < this.N - 1 ; i++ ) {
+      for( var j = i + 1 ; j < this.N ; j++ ) {
+        var d = this.getDist( i , j );
+        var f = universalConstant / pow( d * d + epsilon * epsilon , 1.5 );
+        dAi = p5.Vector.sub( this.X[i] , this.X[j] );
         dAi.normalize();
         PVector dAj = new PVector( dAi.x , dAi.y );
         dAi.mult( f * this.M[j] );

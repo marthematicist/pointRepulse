@@ -16,13 +16,13 @@ var setupGlobalVariables = function() {
   
   dt = 1.0 / ( 40 );
   
-  xMin = 0;
-  xMax = xRes;
-  yMin = 0;
-  yMax = yRes;
+  xMin = -0.1*xRes;
+  xMax = 1.1*xRes;
+  yMin = -0.1*yRes;
+  yMax = 1.1*yRes;
   edgeWidth = xMax * 0.1;
   edgeSpringConstant = 50000;
-  frictionConstant = 0.5;
+  frictionConstant = 0.1;
 
   numDots = 50;
   
@@ -237,7 +237,7 @@ setup = function() {
 
 draw = function() {
   //console.log( 'draw function: setting upt canvas' );
-  background( 0 , 0 , 0 , 30 );
+  background( 0 , 0 , 0 , 2 );
   fill( 255 , 255 , 255 , 255 );
   noStroke();
   //strokeWeight(2);

@@ -31,6 +31,7 @@ var setupGlobalVariables = function() {
   avgMass = 50;
 
   universalConstant = 2500;
+  console.log( universalConstant );
   epsilon = 10;
 
   frameCounter = 0;

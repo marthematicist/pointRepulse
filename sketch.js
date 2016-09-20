@@ -292,3 +292,10 @@ draw = function() {
   }
   */
 }
+
+function keyTyped() {
+  if( key === 's' ) {
+    saveCanvas( 'canvas' , 'jpg' );
+    console.log("saved");
+  }
+}
